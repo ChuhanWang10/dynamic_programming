@@ -11,30 +11,35 @@ def fib(n):
     return fib(n-1) + fib(n-2)
 
 # solve Fibonacci problem with dp 
-class Solution(object):
-    def fib(self, n: int) -> int:
-        '''
-        the index of memo[n] starts from 0, though the index of fib sequence may start from 1.
-        '''
-        memo = [1 for _ in range(n+1)]
-        return self.my_fib(n, memo)
+# class Solution(object):
+#     def fib(self, n: int) -> int:
+#         '''
+#         the index of memo[n] starts from 0, though the index of fib sequence may start from 1.
+#         '''
+#         memo = [1 for _ in range(n+1)]
+#         return self.my_fib(n, memo)
 
-    def my_fib(self, n, memo) -> int:
-        # if n == 0:
-        #     return 0
-        if n <= 2:
-            return 1
+#     def my_fib(self, n, memo) -> int:
+#         # if n == 0:
+#         #     return 0
+#         if n <= 2:
+#             return 1
 
-        if memo[n] != 1:
-            return memo[n]
+#         if memo[n] != 1:
+#             return memo[n]
 
-        memo[n] = self.my_fib(n - 1, memo) + self.my_fib(n - 2, memo)
+#         memo[n] = self.my_fib(n - 1, memo) + self.my_fib(n - 2, memo)
+#         return memo[n]
+
+def fibDP(n:int):
+    memo = [1 for _ in range(n+1)]
+    if n <= 2:
+        return 1
+    if memo[n] != 1:
         return memo[n]
-        
+    memo[n] = fib(n - 1) + fib(n - 2)
+    return memo[n]     
 
-n = 7
-
-# print(fib(n))
-
-solution = Solution()
-print(solution.fib(n))
+n = 8
+print(f"answer: {fib(n)}")
+print(f"answer: {fibDP(n)}")
